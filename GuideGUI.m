@@ -22,7 +22,7 @@ function varargout = GuideGUI(varargin)
 
 % Edit the above text to modify the response to help GuideGUI
 
-% Last Modified by GUIDE v2.5 26-Mar-2017 15:20:01
+% Last Modified by GUIDE v2.5 29-Mar-2017 21:40:34
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -44,6 +44,7 @@ end
 % End initialization code - DO NOT EDIT
 
 % --- Executes just before GuideGUI is made visible.
+
 function GuideGUI_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
@@ -56,6 +57,8 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
+
+    
 
 % UIWAIT makes GuideGUI wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
@@ -87,30 +90,45 @@ varargout{1} = handles.output;
 %treat position along neck as linear variable, and navigate to next desired
 %%linear position
 
+%PUT APPROPRIATE PARAMETERS HERE
 % --- Executes on button press in pushbutton5.
 function pushbutton5_Callback(hObject, eventdata, handles)
     disp('Now playing G!')
     %raiseAllSolenoids(ourArduino); %this function will be stored somewhere else
     %pass in a handle to the ourArduino we are currently using
+    pause(1)
+    foward
     
     %after raising all solenoids, want to move to correct string!
     %moveToG(ourArduino);
-    
 % --- Executes on button press in pushbutton9.
-function pushbutton9_Callback(hObject, eventdata, handles)
+function pushbutton9_Callback(~, eventdata, handles)
     disp('Now playing D!')
     %raiseAllSolenoids(ourArduino);
     %moveToD(ourArduino);
+    pause(1)
+    backward    
+    
 
 % --- Executes on button press in pushbutton7.
 function pushbutton7_Callback(hObject, eventdata, handles)
     disp('Now playing A!')
+    Bow
+    Help
+    pause(1)
+    foward
+    
     %raiseAllSolenoids(ourArduino);
     %moveToA(ourArduino);
 
 % --- Executes on button press in pushbutton8.
 function pushbutton8_Callback(hObject, eventdata, handles)
     disp('Now playing E!')
+    Bow
+    Help
+    pause(1)
+    backward
+    
     %raiseAllSolenoids(ourArduino);
     %moveToE(ourArduino);
 
@@ -153,7 +171,7 @@ function pushbutton16_Callback(hObject, eventdata, handles)
 % --- Executes on button press in pushbutton17.
 function pushbutton17_Callback(hObject, eventdata, handles)
    disp('Now playing E!')
-   depressFirstSolenoid(ourArduino);
+   %depressFirstSolenoid(ourArduino);
   
 %THIS IS THE START OF THE 3RD POSITION NOTES
 % --- Executes on button press in pushbutton18.
@@ -209,6 +227,7 @@ function pushbutton28_Callback(hObject, eventdata, handles)
 function pushbutton29_Callback(hObject, eventdata, handles)
    disp('Now playing G!')
    %depressThirdSolenoid(ourArduino);
+   
 %THIS IS THE START OF THE 6TH POSITION NOTES
 % --- Executes on button press in pushbutton30.
 function pushbutton30_Callback(hObject, eventdata, handles)
@@ -226,7 +245,8 @@ function pushbutton32_Callback(hObject, eventdata, handles)
 % --- Executes on button press in pushbutton33.
 function pushbutton33_Callback(hObject, eventdata, handles)
        disp('Now playing G#!')
-
+       
+%Thisis the start of the 7th position notes!
 % --- Executes on button press in pushbutton34.
 function pushbutton34_Callback(hObject, eventdata, handles)
        disp('Now playing D!')
@@ -242,3 +262,12 @@ function pushbutton36_Callback(hObject, eventdata, handles)
 % --- Executes on button press in pushbutton37.
 function pushbutton37_Callback(hObject, eventdata, handles)
    disp('Now playing A!')
+   %depressFourthSolenoid(ourArduino);
+   
+
+
+% --- Executes during object creation, after setting all properties.
+function uitable2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to uitable2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
